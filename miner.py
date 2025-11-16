@@ -80,6 +80,7 @@ def iterative_sampling_loop(
             bt.logging.warning("[Miner] No valid molecules produced; continuing")
             continue
 
+        
         names = sampler_data["molecules"]
         smiles = sampler_data["smiles"]
         filtered_names = []
@@ -126,6 +127,7 @@ def iterative_sampling_loop(
 
         # Calculate final scores per molecule
         batch_scores = calculate_final_scores(score_dict, sampler_data, config, save_all_scores)
+        
 
         try:
             seen_inchikeys.update([k for k in batch_scores["InChIKey"].tolist() if k])
