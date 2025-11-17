@@ -3,7 +3,6 @@ os.environ['CUBLAS_WORKSPACE_CONFIG'] = ':4096:8'
 
 import sys
 import json
-
 import bittensor as bt
 import pandas as pd
 from rdkit import Chem
@@ -140,10 +139,8 @@ def iterative_sampling_loop(
         top_pool = top_pool.sort_values(by="score", ascending=False)
         top_pool = top_pool.head(config["num_molecules"])
 
-        # format to accepted format
         top_entries = {"molecules": top_pool["name"].tolist()}
 
-        # write to file
         with open(output_path, "w") as f:
             json.dump(top_entries, f, ensure_ascii=False, indent=2)
 
